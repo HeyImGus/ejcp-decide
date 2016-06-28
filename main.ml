@@ -246,8 +246,7 @@ let decide () =
 
 let launch, cmv, pum, fuv = decide ()
 
-let () = print_string (if launch then "yes" else "no");
-	 print_newline ()				       
+let () = print_string (if launch then "YES" else "NO")	       
 	      
 
 
