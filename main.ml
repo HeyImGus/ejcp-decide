@@ -69,17 +69,11 @@ let print s =
 (******* The real stuff ***************)
 		     
 let getFile () =
+  try 
+    Sys.argv.(1)
+  with
+    _ -> print_endline "Error : No file given"; exit 0
 
-  let file = ref ""
-  in
-  begin
-    let speclist = [("-f", Arg.Set_string file, "File to test")]
-    in let usage_msg = "Yes, this is the program you are looking for. Options available:"
-       in Arg.parse speclist print_endline usage_msg;
-	  if !file <> ""
-	  then (*print_endline ("File to test: " ^ !file);*) !file
-	  else failwith "no file given"
-  end
     
 let parse_json json_file =
   let numpoints = to_int (member "NUMPOINTS" json_file) in
